@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="create_cart" instance="Urbit\Shipping\Observer\Actions\CreateCartAndCheckout"/>
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="save_order_info" instance="Urbit\Shipping\Observer\Actions\SaveOrderInfo"/>
+    </event>
+</config>

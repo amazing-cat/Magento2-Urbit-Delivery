@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="urbit_shipping_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Urb-it Shipping</label>
+                <field id="urbit_enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Urb-it module</label>
+                    <source_model>Urbit\Shipping\Model\Config\Source\EnableModuleList</source_model>
+                </field>
+                <field id="urbit_specific_time_days" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable urb-it Specific Time for no of days</label>
+                    <source_model>Urbit\Shipping\Model\Config\Source\SpecificTimeDaysList</source_model>
+                </field>
+                <field id="urbit_order_failure_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Send order failure report to email</label>
+                </field>
+                <field id="urbit_now_order_autovalidation_time" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Now order auto-validation time</label>
+                </field>
+                <field id="urbit_order_status_trigger" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Order status trigger for confirmation</label>
+                    <source_model>Urbit\Shipping\Model\Config\Source\OrderStatusesList</source_model>
+                </field>
+                <field id="urbit_flat_fee_eur" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Urb-it flat Fee (EUR)</label>
+                </field>
+                <field id="urbit_flat_fee_sek" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Urb-it flat Fee (SEK)</label>
+                </field>
+                <field id="urbit_flat_fee_gbp" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Urb-it flat Fee (GBP)</label>
+                </field>
+                <field id="urbit_service_name" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Customize Urb-it shipping method details displayed to customers</label>
+                    <comment>Urb-it service name</comment>
+                </field>
+                <field id="urbit_production_api_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Production X-Api key</label>
+                </field>
+                <field id="urbit_production_bearer" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Production Bearer token</label>
+                </field>
+                <field id="urbit_test_api_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Staging(Test) X-Api key</label>
+                </field>
+                <field id="urbit_test_bearer" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Staging(Test) Bearer token</label>
+                </field>
+                <field id="urbit_environment" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Environment</label>
+                    <source_model>Urbit\Shipping\Model\Config\Source\EnvironmentList</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

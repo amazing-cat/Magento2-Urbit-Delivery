@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Checkout\Api\Data\ShippingInformationInterface">
+        <attribute code="urbit_specific_time_date" type="string"/>
+        <attribute code="urbit_specific_time_hour" type="string"/>
+        <attribute code="urbit_specific_time_minute" type="string"/>
+        <attribute code="urbit_shipping_firstname" type="string"/>
+        <attribute code="urbit_shipping_lastname" type="string"/>
+        <attribute code="urbit_shipping_postcode" type="string"/>
+        <attribute code="urbit_shipping_street" type="string"/>
+        <attribute code="urbit_shipping_city" type="string"/>
+        <attribute code="urbit_shipping_telephone" type="string"/>
+        <attribute code="urbit_shipping_email" type="string"/>
+        <attribute code="urbit_message" type="string"/>
+    </extension_attributes>
+</config>

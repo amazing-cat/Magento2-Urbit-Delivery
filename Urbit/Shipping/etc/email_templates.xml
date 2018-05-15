@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="urbit_order_failure" label="Urbit Order Failure Template"
+              file="urbit_order_failure_email_template.html" type="html" module="Urbit_Shipping" area="frontend"/>
+</config>

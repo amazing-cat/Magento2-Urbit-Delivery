@@ -1,0 +1,113 @@
+<div id="my-carrier-custom-block-wrapper"
+     data-bind="visible: selectedMethod() == 'urbit_urbit', afterRender: fillShippingInputs()">
+    <form id="urbit-shipping-form">
+        <div class="urbit-shipping-form-title text-center urbit-logo"></div>
+        <div class="column-left">
+            <div class="urbit-shipping-type-block">
+                <h4> When would you like your purchase?</h4>
+                <label id="urbit-shipping-now-label" class="urbit-shipping-type">
+                    Now
+                    <input id="urbit-shipping-now-radio" type="radio" name="radio" value="now"
+                           data-bind="checked: isSpecificTime, checkedValue: false">
+                    <span class="checkmark"></span>
+                </label>
+                <label id="urbit-shipping-specific-time-label" class="urbit-shipping-type">
+                    Specific time (CET)
+                    <input id="urbit-shipping-specific-time-radio" type="radio" checked="checked" name="radio"
+                           value="specific"
+                           data-bind="checked: isSpecificTime, checkedValue: true">
+                    <span class="checkmark"></span>
+                </label>
+                <div id="urbit-specific-time-block" data-bind="visible: isSpecificTime">
+                    <select id="urbit_specific_time_date" class="urbit-validation" data-bind="
+                        options: specificTimeDayOptions,
+                        optionsValue: 'value',
+                        optionsText: 'label',
+                        value: selectedSpecificDay,
+                        attr:{'disabled' : IsDaysDisable},
+                        event:{change : getPossibleHours}">
+                    </select>
+                    <select id="urbit_specific_time_hour" class="urbit-validation" data-bind="
+                        options: specificTimeHourOptions,
+                        optionsValue: 'value',
+                        optionsText: 'label',
+                        value: selectedSpecificHour,
+                        attr:{'disabled' : IsHoursDisable},
+                        event:{change : getPossibleMinutes}">
+                    </select>
+                    <select id="urbit_specific_time_minute" class="urbit-validation" data-bind="
+                        options: specificTimeMinuteOptions,
+                        optionsValue: 'value',
+                        optionsText: 'label',
+                        value: selectedSpecificMinute,
+                        attr:{'disabled' : IsMinutesDisable}">
+                    </select>
+                </div>
+                <div class="urbit_validation_error_message" id="urbit_date_validation_error">
+                    <p>Please, select date and time!</p>
+                </div>
+            </div>
+            <div class="delivery-information">
+                <h4> Where would you like to recieve your purchase? </h4>
+                <label id="urbit-shipping-gift-label">
+                    Would you like to send your purchase as a gift?
+                    <input id="urbit-shipping-gift-checkbox" type="checkbox" name="urbit-gift"
+                           data-bind="checked: isGift, checkedValue: true">
+                    <span class="checkmark"></span>
+                </label>
+                <div class="urbit-delivery-input-wrapper">
+                    <input id="urbit_shipping_firstname" class="urbit-delivery-input urbit-validation"
+                           name="urbit_shipping_firstname"
+                           placeholder="First Name" data-validate="{'required-entry':true}"/>
+                </div>
+                <div class="urbit-delivery-input-wrapper">
+                    <input id="urbit_shipping_lastname" class="urbit-delivery-input urbit-validation"
+                           name="urbit_shipping_lastname"
+                           placeholder="Last Name" data-validate="{'required-entry':true}"/>
+                </div>
+                <div class="urbit-delivery-input-wrapper">
+                    <input id="urbit_shipping_postcode" class="urbit-delivery-input urbit-validation"
+                           name="urbit_shipping_postcode"
+                           placeholder="Postcode" data-validate="{'required-entry':true}"/>
+                </div>
+                <div class="urbit-delivery-input-wrapper">
+                    <input id="urbit_shipping_street"
+                           class="urbit-delivery-input urbit-validation" name="urbit_shipping_street"
+                           placeholder="Address" data-validate="{'required-entry':true}"/>
+                </div>
+                <div class="urbit-delivery-input-wrapper">
+                    <input id="urbit_shipping_city" class="urbit-delivery-input urbit-validation" placeholder="City"
+                           name="urbit_shipping_city"
+                           data-validate="{'required-entry':true}"/>
+                </div>
+                <div class="urbit-delivery-input-wrapper">
+                    <input id="urbit_gift_telephone" class="urbit-delivery-input urbit-validation"
+                           placeholder="Recipient's mobile number"
+                           data-validate="{'urbitgiftphonevalidation':true}">
+                </div>
+            </div>
+        </div>
+        <div class="column-right">
+            <h4>How can we best get in touch with you?</h4>
+            <div class="urbit-delivery-input-wrapper">
+                <input id="urbit_shipping_telephone" class="urbit-delivery-input urbit-validation"
+                       name="urbit_shipping_telephone"
+                       placeholder="Phone International Format ex: +336XXXXXXXXX"
+                       data-validate="{'required-entry':true, 'urbitphonevalidation':true}"/>
+            </div>
+            <div class="urbit-delivery-input-wrapper">
+                <input id="urbit_shipping_email" class="urbit-delivery-input urbit-validation"
+                       name="urbit_shipping_email"
+                       placeholder="E-mail" data-validate="{'required-entry':true, 'validate-email':true}"/>
+            </div>
+            <span>Do you have a message for your urber?</span>
+            <div class="urbit-delivery-input-wrapper">
+                <textarea id="urbit_message_textarea" class="urbit-delivery-textarea"
+                          placeholder="Message for urber"></textarea>
+            </div>
+        </div>
+        <div class="urbit_validation_error_message" id="urbit_address_validation_error_message">
+            <p>Malformed address / Address outside the delivery area</p>
+        </div>
+    </form>
+</div>

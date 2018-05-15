@@ -1,0 +1,23 @@
+{
+    "name": "urbit/module-shipping",
+    "description": "Urbit Magento2 Shipping module",
+    "type": "magento2-module",
+    "version": "1.1.4",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "info@urbit.com",
+            "name": "Urb-it"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Urbit\\Shipping\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

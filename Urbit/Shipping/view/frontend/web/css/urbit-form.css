@@ -1,0 +1,221 @@
+#urbit-shipping-form input {
+    background-color: #ffffff;
+}
+
+#urbit_specific_time_date {
+    float: left;
+    width: 49%;
+    margin: 0 1% 10px 0;
+    border: none;
+    height: 40px;
+}
+
+#urbit_specific_time_hour, #urbit_specific_time_minute {
+    float: left;
+    width: 24%;
+    margin: 0 1% 10px 0;
+    border: none;
+    height: 40px;
+}
+
+.urbit-delivery-input-wrapper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.urbit-delivery-input {
+    height: 35px;
+    border: none;
+    font-size: 15px;
+    width: 100%;
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
+.urbit-delivery-textarea {
+    max-height: 100px;
+    max-width: 100%;
+    min-height: 100px;
+    min-width: 100%;
+    border: none;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.urbit-delivery-selectbox {
+    height: 30px;
+    background-color: #F6F7F9;
+    border: none;
+    font-size: 15px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#urbit-shipping-form {
+    border: 2px solid #2c2e2f;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    -webkit-animation: borderBlink 1s linear 5;
+    animation: borderBlink 1s linear 5;
+    background-color: #fbfbfb;
+}
+
+#urbit-shipping-form h4 {
+    margin: 9px 0 10px 0;
+    color: #000;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#urbit-specific-time-block:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#urbit-shipping-form:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.urbit_validation_error_message {
+    display: none;
+    color: #F13340;
+    font-size: 16px;
+    padding: 5px 0px;
+}
+
+.urbit-shipping-form-title {
+    margin: 10px auto 20px auto;
+}
+
+.column-left {
+    float: left;
+    width: 49%;
+    margin: 0 1% 10px 0;
+}
+
+.column-right {
+    float: left;
+    width: 49%;
+    margin: 0 0 10px 1%;
+}
+
+#urbit-shipping-gift-label {
+    font-size: 15px;
+    color: #5ec7d1;
+    position: relative;
+    display: block;
+}
+
+.urbit-shipping-type {
+    height: 20px;
+    padding: 10px;
+    font-size: 15px;
+    color: #7a7a7b;
+    font-weight: 500;
+    background-color: #fff;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: 12px;
+}
+
+.urbit-shipping-type input:checked ~ .checkmark:after, #urbit-shipping-gift-label input:checked ~ .checkmark:after{
+    display: block;
+}
+
+.urbit-shipping-type .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #5EC7D1;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#urbit-shipping-gift-label .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #5EC7D1;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.urbit-shipping-type input,  #urbit-shipping-gift-label input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.urbit-shipping-type input:disabled {
+    opacity: 0;
+}
+
+.urbit-shipping-type .checkmark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    height: 25px;
+    width: 25px;
+}
+
+#urbit-shipping-gift-label .checkmark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    height: 15px;
+    width: 15px;
+    border: 2px solid #5ec7d1;
+    border-radius: 5px;
+}
+
+.urbit-shipping-type:hover, #urbit-shipping-gift-label:hover {
+    cursor: pointer;
+}
+
+#urbit_gift_telephone {
+    display: none;
+}
+
+.urbit-logo {
+    background: url('../img/logo.png') no-repeat;
+    background-size: 100% 100%;
+    width: 40px;
+    height: 50px;
+}
+
+@media screen and (max-width: 600px) {
+    .column-left {
+        width: 100%;
+        float: none;
+    }
+
+    .column-right {
+        width: 100%;
+        float: none;
+    }
+}
