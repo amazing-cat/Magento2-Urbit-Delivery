@@ -6,63 +6,110 @@
             <group id="urbit_shipping_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
                    showInStore="0">
                 <label>Urb-it Shipping</label>
-                <field id="urbit_enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Urb-it module</label>
                     <source_model>Urbit\Shipping\Model\Config\Source\EnableModuleList</source_model>
                 </field>
-                <field id="urbit_specific_time_days" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_specific_time_days" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Enable urb-it Specific Time for no of days</label>
                     <source_model>Urbit\Shipping\Model\Config\Source\SpecificTimeDaysList</source_model>
                 </field>
-                <field id="urbit_order_failure_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_order_failure_email" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Send order failure report to email</label>
                 </field>
-                <field id="urbit_now_order_autovalidation_time" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_now_order_autovalidation_time" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Now order auto-validation time</label>
                 </field>
-                <field id="urbit_order_status_trigger" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_order_status_trigger" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Order status trigger for confirmation</label>
                     <source_model>Urbit\Shipping\Model\Config\Source\OrderStatusesList</source_model>
                 </field>
-                <field id="urbit_flat_fee_eur" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_flat_fee_eur" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Urb-it flat Fee (EUR)</label>
                 </field>
-                <field id="urbit_flat_fee_sek" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_flat_fee_sek" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Urb-it flat Fee (SEK)</label>
                 </field>
-                <field id="urbit_flat_fee_gbp" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_flat_fee_gbp" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Urb-it flat Fee (GBP)</label>
                 </field>
-                <field id="urbit_service_name" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_service_name" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Customize Urb-it shipping method details displayed to customers</label>
                     <comment>Urb-it service name</comment>
                 </field>
-                <field id="urbit_production_api_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_allowed_products" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Allowed products</label>
+                    <source_model>Urbit\Shipping\Model\Config\Source\AllowedProductsList</source_model>
+                </field>
+                <field id="urbit_max_package_weight" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Maximum package weight</label>
+                    <comment>kg (Default: 10 kg)</comment>
+                </field>
+                <field id="urbit_use_dimensions" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Dimensions</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="urbit_max_size" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Maximum size</label>
+                    <depends>
+                        <field id="urbit_use_dimensions">1</field>
+                    </depends>
+                    <comment>m3 (Default: 0.25 m3)</comment>
+                </field>
+                <field id="urbit_dimension_height" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Product Height Attribute</label>
+                    <depends>
+                        <field id="urbit_use_dimensions">1</field>
+                    </depends>
+                    <source_model>Urbit\Shipping\Model\Config\Source\ProductAttributesList</source_model>
+                </field>
+                <field id="urbit_dimension_length" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Product Length Attribute</label>
+                    <depends>
+                        <field id="urbit_use_dimensions">1</field>
+                    </depends>
+                    <source_model>Urbit\Shipping\Model\Config\Source\ProductAttributesList</source_model>
+                </field>
+                <field id="urbit_dimension_width" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Product Width Attribute</label>
+                    <depends>
+                        <field id="urbit_use_dimensions">1</field>
+                    </depends>
+                    <source_model>Urbit\Shipping\Model\Config\Source\ProductAttributesList</source_model>
+                </field>
+
+                <field id="urbit_production_api_key" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Production X-Api key</label>
                 </field>
-                <field id="urbit_production_bearer" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_production_bearer" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Production Bearer token</label>
                 </field>
-                <field id="urbit_test_api_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_test_api_key" translate="label" type="text" sortOrder="190" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Staging(Test) X-Api key</label>
                 </field>
-                <field id="urbit_test_bearer" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_test_bearer" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Staging(Test) Bearer token</label>
                 </field>
-                <field id="urbit_environment" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                <field id="urbit_environment" translate="label" type="select" sortOrder="210" showInDefault="1" showInWebsite="1"
                        showInStore="1">
                     <label>Environment</label>
                     <source_model>Urbit\Shipping\Model\Config\Source\EnvironmentList</source_model>

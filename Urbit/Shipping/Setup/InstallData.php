@@ -5,6 +5,8 @@ namespace Urbit\Shipping\Setup;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Eav\Setup\EavSetup;
+use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Sales\Setup\SalesSetupFactory;
 use Magento\Quote\Setup\QuoteSetupFactory;
 
@@ -24,6 +26,11 @@ class InstallData implements InstallDataInterface
      * @var QuoteSetupFactory
      */
     protected $_quoteSetupFactory;
+
+    /**
+     * @var EavSetupFactory
+     */
+    protected $_eavSetupFactory;
 
     /**
      * @var array
@@ -48,13 +55,16 @@ class InstallData implements InstallDataInterface
      *
      * @param SalesSetupFactory $salesSetupFactory
      * @param QuoteSetupFactory $quoteSetupFactory
+     * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(
         SalesSetupFactory $salesSetupFactory,
-        QuoteSetupFactory $quoteSetupFactory
+        QuoteSetupFactory $quoteSetupFactory,
+        EavSetupFactory $eavSetupFactory
     ) {
         $this->_salesSetupFactory = $salesSetupFactory;
         $this->_quoteSetupFactory = $quoteSetupFactory;
+        $this->_eavSetupFactory = $eavSetupFactory;
     }
 
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
@@ -76,6 +86,9 @@ class InstallData implements InstallDataInterface
             );
 
         $this->addOrderAttributes($salesInstaller, $quoteInstaller);
+
+        $eavSetup = $this->_eavSetupFactory->create(['setup' => $setup]);
+        $this->addProductAttributes($eavSetup);
     }
 
     /**
@@ -90,5 +103,41 @@ class InstallData implements InstallDataInterface
             $salesInstaller->addAttribute('order', $attribute, ['type' => 'varchar']);
             $quoteInstaller->addAttribute('quote', $attribute, ['type' => 'varchar']);
         }
+    }
+
+    /**
+     * Add custom attributes to product
+     *
+     * @param $eavSetup
+     */
+    public function addProductAttributes($eavSetup)
+    {
+        $eavSetup->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'available_for_urbit',
+            [
+                'group'                   => 'General',
+                'type'                    => 'int',
+                'backend'                 => '',
+                'frontend'                => '',
+                'label'                   => 'Available For Urb-it',
+                'input'                   => 'boolean',
+                'class'                   => '',
+                'source'                  => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
+                'global'                  => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                'visible'                 => true,
+                'required'                => false,
+                'user_defined'            => false,
+                'default'                 => '0',
+                'searchable'              => false,
+                'filterable'              => false,
+                'comparable'              => false,
+                'visible_on_front'        => false,
+                'used_in_product_listing' => true,
+                'unique'                  => false,
+                'apply_to'                => 'simple,configurable,virtual,bundle,downloadable'
+            ]
+        );
+
     }
 }

@@ -106,7 +106,7 @@ class Config extends AbstractHelper
      *
      * @param $currencyCode
      *
-     * @return int
+     * @return double
      */
     public function getDeliveryPrice($currencyCode)
     {
@@ -131,6 +131,78 @@ class Config extends AbstractHelper
     public function getUrbitServiceName()
     {
         return $this->getConfigValue('urbit_service_name');
+    }
+
+    /**
+     * Returns Maximum package weight field's value from config
+     *
+     * @return double
+     */
+    public function getMaxWeight()
+    {
+        return (double)$this->getConfigValue('urbit_max_package_weight');
+    }
+
+    /**
+     * Returns Maximum package weight field's value from config
+     *
+     * @return double
+     */
+    public function getMaxDimensionSize()
+    {
+        return (float)$this->getConfigValue('urbit_max_size');
+    }
+
+    /**
+     * Returns Allowed products field's value from config
+     *
+     * returns 'all' or 'specific'
+     *
+     * @return string
+     */
+    public function getAllowedProducts()
+    {
+        return $this->getConfigValue('urbit_allowed_products');
+    }
+
+    /**
+     * Returns Use Dimensions field's value from config
+     *
+     * @return string
+     */
+    public function getUseDimensions()
+    {
+        return $this->getConfigValue('urbit_use_dimensions');
+    }
+
+    /**
+     * Returns Product Width Attribute field's value from config
+     *
+     * @return string
+     */
+    public function getWidthAttributeCode()
+    {
+        return $this->getConfigValue('urbit_dimension_width');
+    }
+
+    /**
+     * Returns Product Height Attribute field's value from config
+     *
+     * @return string
+     */
+    public function getHeightAttributeCode()
+    {
+        return $this->getConfigValue('urbit_dimension_height');
+    }
+
+    /**
+     * Returns Product Length Attribute field's value from config
+     *
+     * @return string
+     */
+    public function getLengthAttributeCode()
+    {
+        return $this->getConfigValue('urbit_dimension_length');
     }
 
     /**
