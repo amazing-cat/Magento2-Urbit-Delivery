@@ -80,8 +80,10 @@ class UpdateCheckouts
 
         foreach ($orderCollection as $order) {
             $isTriggered = $order->getUrbitTriggered();
+            $isDone = $order->getUrbitDone();
+            $isCanceled = $order->getStatus() == 'canceled' ? true : false;
 
-            if (isset($isTriggered) && $isTriggered == 'false') {
+            if (isset($isTriggered) && $isTriggered == 'false' && !$isCanceled) {
                 $orderUpdateCheckoutTime = $order->getUrbitUpdateCheckoutTime();
 
                 if (isset($orderUpdateCheckoutTime) && $orderUpdateCheckoutTime != "" && (int)$orderUpdateCheckoutTime <= $nowTimestamp) {
@@ -90,6 +92,9 @@ class UpdateCheckouts
                     $order->save();
                 }
             }
+
+            if ((isset($isTriggered) && $isDone && $isTriggered == 'true') || $isCanceled)
+                $this->clean_gdpr_data($order);
         }
     }
 
@@ -139,7 +144,29 @@ class UpdateCheckouts
                 (isset($response['errors']['message']) ? $response['errors']['message'] : 'Error');
 
             $this->_emailSender->sendOrderFailureReport($recipientEmail, $orderId, $errorMessage);
+        } else {
+            $order->setData('urbit_done', true);
+            $order->save();
         }
+    }
+
+    /**
+     * Clean up restricted by GDPR customer data
+     *
+     * @param $order
+     */
+    public function clean_gdpr_data($order)
+    {
+        $order->setData('urbit_first_name', '');
+        $order->setData('urbit_last_name', '');
+        $order->setData('urbit_message', '');
+        $order->setData('urbit_street', '');
+        $order->setData('urbit_city', '');
+        $order->setData('urbit_postcode', '');
+        $order->setData('urbit_email', '');
+        $order->setData('urbit_phone_number', '');
+
+        $order->save();
     }
 
 }

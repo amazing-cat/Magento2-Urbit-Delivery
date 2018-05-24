@@ -47,7 +47,8 @@ class InstallData implements InstallDataInterface
         'urbit_city',
         'urbit_postcode',
         'urbit_phone_number',
-        'urbit_email'
+        'urbit_email',
+        'urbit_done'
     ];
 
     /**

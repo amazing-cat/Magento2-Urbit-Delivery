@@ -94,7 +94,7 @@ class CreateCartAndCheckout extends AbstractCheckoutObserver
         $responseObj = $this->api->createCart($result);
         $response = $responseObj->getResponse();
 
-        $this->logger->debug("Create Cart response" . print_r($responseObj, true));
+        // $this->logger->debug("Create Cart response" . print_r($responseObj, true));
 
         //save cart id to session
         if (isset($response['id'])) {

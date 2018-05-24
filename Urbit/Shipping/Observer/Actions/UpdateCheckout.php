@@ -120,6 +120,9 @@ class UpdateCheckout extends AbstractCheckoutObserver
                 (isset($response['errors']['message']) ? $response['errors']['message'] : 'Error');
 
             $this->emailSender->sendOrderFailureReport($recipientEmail, $orderId, $errorMessage);
+        } else {
+            $order->setData('urbit_done', true);
+            $order->save();
         }
     }
 }
